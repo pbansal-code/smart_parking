@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<!-- Animated Background Shapes -->
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<div class="container">
+    <!-- Form Header with Logo -->
+    <div class="form-header">
+        <div class="logo-container">🚗</div>
+        <div class="app-name">Smart Parking</div>
+        <p class="form-subtitle">Create your account to get started</p>
+    </div>
+
+    <div class="input-group">
+        <i>👤</i>
+        <input type="text" id="name" placeholder=" " required>
+        <label for="name">Full Name</label>
+    </div>
+
+    <div class="input-group">
+        <i>📧</i>
+        <input type="email" id="email" placeholder=" " required>
+        <label for="email">Email Address</label>
+    </div>
+
+    <div class="input-group">
+        <i>🚙</i>
+        <input type="text" id="vehicle" placeholder=" " required>
+        <label for="vehicle">Vehicle Number</label>
+    </div>
+
+    <div class="input-group">
+        <i>🔒</i>
+        <input type="password" id="password" placeholder=" " required oninput="checkPasswordStrength(this.value)">
+        <label for="password">Password</label>
+    </div>
+
+    <!-- Password Requirements -->
+    <div class="password-requirements">
+        <p id="req-length" class="requirement">○ Minimum 8 characters</p>
+        <p id="req-uppercase" class="requirement">○ At least 1 uppercase letter</p>
+        <p id="req-lowercase" class="requirement">○ At least 1 lowercase letter</p>
+        <p id="req-number" class="requirement">○ At least 1 number</p>
+        <p id="req-special" class="requirement">○ At least 1 special character (@#$!%*?&)</p>
+    </div>
+
+    <button onclick="registerUser()">Register Now</button>
+    <a href="login.html">Already registered? Login here</a>
+</div>
+
+<!-- Toast Container for notifications -->
+<div class="toast-container"></div>
+
+</body>
+</html>

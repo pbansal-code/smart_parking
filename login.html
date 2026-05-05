@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<!-- Animated Background Shapes -->
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<div class="container">
+    <!-- Form Header with Logo -->
+    <div class="form-header">
+        <div class="logo-container">🚗</div>
+        <div class="app-name">Smart Parking</div>
+        <p class="form-subtitle">Welcome back! Please login to continue</p>
+    </div>
+
+    <div class="input-group">
+        <i>📧</i>
+        <input type="email" id="loginEmail" placeholder=" " required>
+        <label for="loginEmail">Email Address</label>
+    </div>
+
+    <div class="input-group">
+        <i>🔒</i>
+        <input type="password" id="loginPassword" placeholder=" " required>
+        <label for="loginPassword">Password</label>
+    </div>
+
+    <button onclick="loginUser()">Login</button>
+    <a href="register.html">New user? Create an account</a>
+</div>
+
+<!-- Toast Container for notifications -->
+<div class="toast-container"></div>
+
+</body>
+</html>

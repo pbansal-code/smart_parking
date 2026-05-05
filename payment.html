@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment - Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload="checkLogin(); loadPaymentPage()">
+
+<!-- Animated Background Shapes -->
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<div class="navbar">
+    <span>🚗 Smart Parking System</span>
+    <div class="nav-links">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="history.html" class="nav-link">My Bookings</a>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="booking-form" id="payment-container">
+    <h2>💳 Payment & Fine Calculator</h2>
+
+    <!-- Booking Summary -->
+    <div class="payment-summary" id="bookingSummary">
+        <h3>Booking Summary</h3>
+        <div class="summary-row">
+            <span>Parking Slot:</span>
+            <span id="paySlot">-</span>
+        </div>
+        <div class="summary-row">
+            <span>Date:</span>
+            <span id="payDate">-</span>
+        </div>
+        <div class="summary-row">
+            <span>Check-in Time:</span>
+            <span id="payTime">-</span>
+        </div>
+        <div class="summary-row">
+            <span>Planned Duration:</span>
+            <span id="payDuration">-</span>
+        </div>
+    </div>
+
+    <!-- Duration Selector -->
+    <div class="input-group">
+        <i>⏱️</i>
+        <select id="durationHours" onchange="calculateFee()">
+            <option value="1">1 Hour</option>
+            <option value="2">2 Hours</option>
+            <option value="3">3 Hours</option>
+            <option value="4">4 Hours</option>
+            <option value="6">6 Hours</option>
+            <option value="8">8 Hours (Full Day)</option>
+        </select>
+        <label for="durationHours">Parking Duration</label>
+    </div>
+
+    <!-- Overstay Fine Calculator -->
+    <div class="fine-section">
+        <h3>⚠️ Overstay Fine Calculator</h3>
+        <div class="input-group">
+            <i>⏰</i>
+            <input type="number" id="overstayHours" placeholder=" " min="0" max="24" oninput="calculateFee()">
+            <label for="overstayHours">Extra Hours (overstay)</label>
+        </div>
+    </div>
+
+    <!-- Fee Breakdown -->
+    <div class="fee-breakdown" id="feeBreakdown">
+        <div class="fee-row">
+            <span>Base Rate (per hour):</span>
+            <span>₹30</span>
+        </div>
+        <div class="fee-row">
+            <span>Parking Fee (<span id="feeHours">1</span> hrs):</span>
+            <span id="parkingFee">₹30</span>
+        </div>
+        <div class="fee-row fine-row" id="fineRow" style="display:none;">
+            <span>Overstay Fine (<span id="fineHours">0</span> hrs × ₹50):</span>
+            <span id="fineFee">₹0</span>
+        </div>
+        <div class="fee-row total-row">
+            <span><strong>Total Amount:</strong></span>
+            <span id="totalFee"><strong>₹30</strong></span>
+        </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="payment-methods">
+        <h3>Select Payment Method</h3>
+        <div class="payment-options">
+            <div class="payment-option selected" onclick="selectPayment(this, 'upi')" id="pay-upi">
+                <span>📱</span>
+                <span>UPI</span>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this, 'card')" id="pay-card">
+                <span>💳</span>
+                <span>Card</span>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this, 'cash')" id="pay-cash">
+                <span>💵</span>
+                <span>Cash</span>
+            </div>
+            <div class="payment-option" onclick="selectPayment(this, 'wallet')" id="pay-wallet">
+                <span>👝</span>
+                <span>Wallet</span>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="selectedPayment" value="upi">
+
+    <button onclick="processPayment()" id="payBtn">Pay Now</button>
+    <a href="history.html" class="back-link">← Back to My Bookings</a>
+</div>
+
+<!-- Payment Success Modal -->
+<div id="paymentModal" class="modal-overlay" style="display:none;">
+    <div class="modal-box">
+        <div class="modal-icon">✅</div>
+        <h3>Payment Successful!</h3>
+        <p id="modalMessage">Your parking slot has been confirmed.</p>
+        <div class="modal-receipt" id="modalReceipt"></div>
+        <button onclick="closeModal()">Done</button>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container"></div>
+
+</body>
+</html>

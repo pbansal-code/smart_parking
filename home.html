@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload="checkLogin()">
+
+<!-- Animated Background Shapes -->
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<div class="navbar">
+    <span>🚗 Smart Parking System</span>
+    <div class="nav-links">
+        <a href="history.html" class="nav-link">📋 My Bookings</a>
+        <a href="payment.html" class="nav-link">💳 Payment</a>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="dashboard">
+    <h2>Available Parking Slots</h2>
+
+    <div class="slots-container">
+        <div class="slot available" onclick="selectSlot(this, 'A1')">
+            Slot A1
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'A2')">
+            Slot A2
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'A3')">
+            Slot A3
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot occupied" onclick="selectSlot(this, 'B1')">
+            Slot B1
+            <span class="status">✕ Occupied</span>
+        </div>
+        <div class="slot occupied" onclick="selectSlot(this, 'B2')">
+            Slot B2
+            <span class="status">✕ Occupied</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'B3')">
+            Slot B3
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'C1')">
+            Slot C1
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'C2')">
+            Slot C2
+            <span class="status">✓ Available</span>
+        </div>
+        <div class="slot available" onclick="selectSlot(this, 'C3')">
+            Slot C3
+            <span class="status">✓ Available</span>
+        </div>
+    </div>
+
+    <div class="dashboard-actions">
+        <button onclick="location.href='book.html'">Book Parking Slot</button>
+        <button onclick="location.href='history.html'" style="background: rgba(255,255,255,0.15);">📋 My Bookings</button>
+    </div>
+</div>
+
+<!-- Toast Container for notifications -->
+<div class="toast-container"></div>
+
+</body>
+</html>

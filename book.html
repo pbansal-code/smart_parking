@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Slot - Smart Parking</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload="checkLogin()">
+
+<!-- Animated Background Shapes -->
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+</div>
+
+<div class="navbar">
+    <span>🚗 Smart Parking System</span>
+    <div class="nav-links">
+        <a href="history.html" class="nav-link">📋 My Bookings</a>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+</div>
+
+<div class="booking-form">
+    <h2>Book Your Parking Slot</h2>
+
+    <!-- AI Recommendation Banner -->
+    <div class="ai-banner" id="aiBanner">
+        🤖 <strong>AI Smart Recommendation</strong> — The highlighted slot (⭐) is recommended based on your booking history and current time.
+    </div>
+
+    <!-- Interactive Slot Selection -->
+    <div class="slot-selection">
+        <h3>Select a Parking Slot:</h3>
+        <div class="slot-grid">
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'A1')">A1</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'A2')">A2</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'A3')">A3</div>
+            <div class="slot-item occupied" onclick="selectSlotFromGrid(this, 'B1')">B1</div>
+            <div class="slot-item occupied" onclick="selectSlotFromGrid(this, 'B2')">B2</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'B3')">B3</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'C1')">C1</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'C2')">C2</div>
+            <div class="slot-item available" onclick="selectSlotFromGrid(this, 'C3')">C3</div>
+        </div>
+    </div>
+
+    <!-- Hidden input to store selected slot -->
+    <input type="hidden" id="slot" value="">
+
+    <div class="input-group">
+        <i>📅</i>
+        <input type="date" id="date" placeholder=" ">
+        <label for="date">Select Date</label>
+    </div>
+
+    <div class="input-group">
+        <i>⏰</i>
+        <input type="time" id="time" placeholder=" ">
+        <label for="time">Select Time</label>
+    </div>
+
+    <button onclick="bookSlot()">Confirm Booking</button>
+    <a href="home.html" class="back-link">← Back to Home</a>
+</div>
+
+<!-- Toast Container for notifications -->
+<div class="toast-container"></div>
+
+<style>
+.ai-banner {
+    background: linear-gradient(135deg, rgba(243,156,18,0.15), rgba(230,126,34,0.15));
+    border: 1px solid rgba(243,156,18,0.4);
+    border-radius: 12px; padding: 12px 16px; margin-bottom: 20px;
+    font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.5;
+}
+</style>
+
+</body>
+</html>
