@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Smart Parking Test Suite" parallel="false">
+<suite name="Smart Parking Automation Suite" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="com.smartparking.listeners.TestListener" />
+    </listeners>
 
-    <test name="Registration Tests">
-        <classes>
-            <class name="com.smartparking.tests.RegistrationTests"/>
-        </classes>
+    <!-- Smoke Test Suite -->
+    <test name="Smoke Tests" enabled="true">
+        <groups>
+            <run>
+                <include name="smoke" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.smartparking.tests" />
+        </packages>
     </test>
 
-    <test name="Login Tests">
-        <classes>
-            <class name="com.smartparking.tests.LoginTests"/>
-        </classes>
+    <!-- Functional Test Suite -->
+    <test name="Functional Tests" enabled="true">
+        <groups>
+            <run>
+                <include name="functional" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.smartparking.tests" />
+        </packages>
     </test>
 
-    <test name="Home Page Tests">
-        <classes>
-            <class name="com.smartparking.tests.HomePageTests"/>
-        </classes>
+    <!-- Regression Test Suite -->
+    <test name="Regression Tests" enabled="true">
+        <groups>
+            <run>
+                <include name="regression" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.smartparking.tests" />
+        </packages>
     </test>
-
-    <test name="Booking Tests">
-        <classes>
-            <class name="com.smartparking.tests.BookingTests"/>
-        </classes>
-    </test>
-
-    <test name="Booking History Tests">
-        <classes>
-            <class name="com.smartparking.tests.BookingHistoryTests"/>
-        </classes>
-    </test>
-
-    <test name="AI Recommendation Tests">
-        <classes>
-            <class name="com.smartparking.tests.AIRecommendationTests"/>
-        </classes>
-    </test>
-
-    <test name="Payment Tests">
-        <classes>
-            <class name="com.smartparking.tests.PaymentTests"/>
-        </classes>
-    </test>
-
 </suite>
